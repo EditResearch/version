@@ -7,4 +7,4 @@ all: install
 .PHONY: install
 
 install:
-  cp -v version.h $(INCLUDE_PATH)
+	cp -v version.h $(INCLUDE_PATH)

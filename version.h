@@ -2,6 +2,7 @@
 #define _VERSION_H_
 
 #include <stdint.h>
+#include <stdio.h>
 
 typedef struct
 {
@@ -11,8 +12,21 @@ typedef struct
 }Version;
 
 
-#define DEFINE_VERSION(lib, major, minor, patch) \
-  const Version __version_##lib##__ {.major=major, .minor=minor, .patch=patch}
+#define DEFINE_VERSION(major, minor, patch) \
+    (const Version){major, minor, patch}
 
+
+inline void
+version_show(
+    FILE * stream
+    , const Version version)
+{
+    fprintf(
+        stream
+        , "Version {major=%d, minor=%d, patch=%d}\n"
+        , version.major
+        , version.minor
+        , version.patch);
+}
 
 #endif
